@@ -1,10 +1,32 @@
 #include <math.h>
 #include "parameters.h"
 
+/* Key:
+ * del - change
+ *
+ * t - time
+ *
+ * r - roll
+ * p - pitch
+ * y - yaw
+ *
+ * g - gyroscope
+ * a - accelerometer
+ * m - magnetometer
+*/
+
+double r = 0;
+double p = 0;
+double y = 0;
+
+
+double dr = 0;
+double dp = 0;
+double dy = 0;
+
 /*
  * Update rate.  This is how often our state is updated with
- * gyro rate measurements.  You will have to change this value
- * if yo/u update at a different rate.
+ * gyro rate measurements.
  * eg .02 = 50 Hz rate
  */
 static const double	dt	= dt_PARAM;
