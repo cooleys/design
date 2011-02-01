@@ -19,7 +19,6 @@ double r = 0;
 double p = 0;
 double y = 0;
 
-
 double dr = 0;
 double dp = 0;
 double dy = 0;
@@ -35,8 +34,9 @@ static const double	dt	= dt_PARAM;
  * Covariance matrix.  This is updated at every time step to
  * determine how well the sensors are tracking the actual state.
  */
-static double P[2][2] = {	{ 1, 0 },
-							{ 0, 1 },	};
+static double P[3][3] = {	{ 1, 0, 0 },
+							{ 0, 1, 0 },
+							{ 0, 0, 1 },	};
 
 /*
  * Our two states, the angle and the gyro bias.  As a byproduct of computing
@@ -48,7 +48,7 @@ double q_bias=0.0;
 double rate=0.0;
 
 /*
- * R represents the measurement covariance noise.  In this case,
+ * R represents the measurement covariance noise in radians.
  * it is a 1x1 matrix that says that we expect 0.3 rad jitter
  * from the accelerometer.
  */
@@ -57,7 +57,7 @@ double rate=0.0;
 static const double	R_angle	= R_angle_PARAM;
 
 /*
- * Q is a 2x2 matrix that represents the process covariance noise.
+ * Q is a 3x3 matrix that represents the process covariance noise.
  * In this case, it indicates how much we trust the acceleromter
  * relative to the gyros.
  */
